@@ -1,2 +1,43 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? %>
+  <div class="container mt-5">
+    <div class="row text-center">
+      <!-- Jobs Section -->
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <h3>Jobs</h3>
+          <p>Find job opportunities tailored for Romanians in Spain.</p>
+          <%# <%= link_to "View Jobs", jobs_path, class: "btn btn-primary" %> %>
+        </div>
+      </div>
+
+      <!-- Housing Section -->
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <h3>Housing</h3>
+          <p>Browse affordable housing options near you.</p>
+          <%# <%= link_to "View Housing", housing_path, class: "btn btn-success" %> %>
+        </div>
+      </div>
+
+      <!-- Settlement Info Section -->
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <h3>Settlement Info</h3>
+          <p>Access key information about settling in Spain.</p>
+          <%# <%= link_to "Learn More", settlement_info_path, class: "btn btn-info" %> %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Website-ul care aduce <strong>comunitatiile</strong> mai <strong>aproape</strong>!</h1>
+    <p>Vrei sa te muti in Spania?! Afla tot ce ai nevoie chiar acum! </p>
+    <a class="btn btn-flat" href="<%= new_user_registration_path %>">Creeaza un cont</a>
+  </div>
+</div>
+
+<% end %>

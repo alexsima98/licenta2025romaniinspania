@@ -3,11 +3,13 @@
     <div class="row text-center">
       <!-- Jobs Section -->
       <div class="col-md-4">
+        <%= link_to jobs_path, class: "text-decoration-none text-dark" do %>
         <div class="p-4 border rounded shadow-sm h-100">
-          <h3>Jobs</h3>
-          <p>Find job opportunities tailored for Romanians in Spain.</p>
-          <%# <%= link_to "View Jobs", jobs_path, class: "btn btn-primary" %> %>
+          <h3>Joburi</h3>
+          <p>Gaseste-ti locul de munca ideal</p>
+          <%# <%= link_to "View Jobs", jobs_path, class: "btn btn-primary" %>
         </div>
+        <% end %>
       </div>
 
       <!-- Housing Section -->
@@ -15,7 +17,7 @@
         <div class="p-4 border rounded shadow-sm h-100">
           <h3>Housing</h3>
           <p>Browse affordable housing options near you.</p>
-          <%# <%= link_to "View Housing", housing_path, class: "btn btn-success" %> %>
+          <%# <%= link_to "View Housing", housing_path, class: "btn btn-success" %>
         </div>
       </div>
 
@@ -24,7 +26,7 @@
         <div class="p-4 border rounded shadow-sm h-100">
           <h3>Settlement Info</h3>
           <p>Access key information about settling in Spain.</p>
-          <%# <%= link_to "Learn More", settlement_info_path, class: "btn btn-info" %> %>
+          <%# <%= link_to "Learn More", settlement_info_path, class: "btn btn-info" %>
         </div>
       </div>
     </div>

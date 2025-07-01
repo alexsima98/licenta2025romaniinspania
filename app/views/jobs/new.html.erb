@@ -1,0 +1,20 @@
+<h2>Adaugă un Job</h2>
+
+<%= form_with model: @job, local: true, html: { multipart: true } do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control mb-2" %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control mb-2" %>
+
+  <%= f.label :salary, "Salariu (€)" %>
+  <%= f.number_field :salary, class: "form-control mb-2" %>
+
+  <%= f.label :category %>
+  <%= f.text_field :category, class: "form-control mb-2" %>
+
+  <%= f.label :images, "Poze" %>
+  <%= f.file_field :images, multiple: true, class: "form-control mb-3" %>
+
+  <%= f.submit "Publică Jobul", class: "btn btn-success" %>
+<% end %>

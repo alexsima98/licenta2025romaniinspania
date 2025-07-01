@@ -1,0 +1,32 @@
+<div class="container py-5">
+  <h1 class="mb-4">Adaugă o locuință</h1>
+
+  <%= form_with model: @housing, local: true, html: { multipart: true } do |f| %>
+    <div class="mb-3">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :location %>
+      <%= f.text_field :location, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :price %>
+      <%= f.number_field :price, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control", rows: 4 %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :images %>
+      <%= f.file_field :images, multiple: true, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Publică", class: "btn btn-primary" %>
+  <% end %>
+</div>

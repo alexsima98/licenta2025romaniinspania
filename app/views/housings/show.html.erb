@@ -1,0 +1,16 @@
+<div class="container py-5">
+  <h1 class="mb-4"><%= @housing.title %></h1>
+  <p><strong>Locație:</strong> <%= @housing.location %></p>
+  <p><strong>Preț:</strong> <%= number_to_currency(@housing.price, unit: "€", precision: 0) %> / lună</p>
+  <p><%= @housing.description %></p>
+
+  <% if @housing.images.attached? %>
+    <div class="row mt-4">
+      <% @housing.images.each do |image| %>
+        <div class="col-md-4 mb-3">
+          <%= image_tag image.variant(resize_to_limit: [500, 300]), class: "img-fluid rounded" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

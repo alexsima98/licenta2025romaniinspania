@@ -21,6 +21,13 @@ gem "sprockets"
 
 gem "devise"
 
+gem 'image_processing', '~> 1.2'
+
+# Gemfile
+group :development, :test do
+  gem 'faker'
+end
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -72,3 +79,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "pundit", "~> 2.5"

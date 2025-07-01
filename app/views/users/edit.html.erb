@@ -1,0 +1,47 @@
+<div class="container py-5">
+  <h2 class="text-center mb-4">Editează profilul</h2>
+
+  <%= form_with url: profile_path, method: :patch, local: true, html: { multipart: true } do |f| %>
+
+    <div class="d-flex flex-column align-items-center gap-4">
+
+      <!-- Foto -->
+      <div class="d-flex align-items-center justify-content-center gap-4">
+
+      <div class="text-center">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar.variant(resize_to_fill: [100, 100]), class: "rounded-circle shadow", alt: "Avatar" %>
+        <% else %>
+          <%= image_tag "default-avatar.jpg", width: 100, height: 100, class: "rounded-circle shadow", alt: "Avatar" %>
+        <% end %>
+      </div>
+
+      <!-- Upload nou -->
+      <div class="text-center">
+        <label for="avatar_upload" class="border rounded p-3 d-inline-block text-muted text-center" style="cursor: pointer;">
+          Schimbă
+        </label>
+        <%= f.file_field :avatar, id: "avatar_upload", class: "d-none" %>
+      </div>
+      </div>
+
+      <!-- Descriere -->
+      <div class="w-100" style="max-width: 500px;">
+        <%= f.label :description, "Descriere", class: "form-label" %>
+        <%= f.text_area :description, rows: 3, class: "form-control" %>
+      </div>
+
+      <!-- Switch looking_for_job -->
+      <div class="form-check form-switch">
+        <%= f.check_box :looking_for_job, class: "form-check-input", role: "switch" %>
+        <%= f.label :looking_for_job, "În căutare de job", class: "form-check-label" %>
+      </div>
+
+      <!-- Submit -->
+      <div>
+        <%= f.submit "Salvează", class: "btn btn-primary px-4" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>

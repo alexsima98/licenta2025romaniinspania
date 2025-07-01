@@ -14,20 +14,26 @@
 
       <!-- Housing Section -->
       <div class="col-md-4">
+                        <%= link_to housings_index_path, class: "text-decoration-none text-dark" do %>
+
         <div class="p-4 border rounded shadow-sm h-100">
-          <h3>Housing</h3>
-          <p>Browse affordable housing options near you.</p>
+          <h3>Locuințe</h3>
+          <p>Găsește locuințe în apropierea ta.</p>
           <%# <%= link_to "View Housing", housing_path, class: "btn btn-success" %>
         </div>
+        <% end %>
       </div>
 
       <!-- Settlement Info Section -->
       <div class="col-md-4">
+                <%= link_to housings_index_path, class: "text-decoration-none text-dark" do %>
+
         <div class="p-4 border rounded shadow-sm h-100">
           <h3>Settlement Info</h3>
           <p>Access key information about settling in Spain.</p>
           <%# <%= link_to "Learn More", settlement_info_path, class: "btn btn-info" %>
         </div>
+        <% end %>
       </div>
     </div>
   </div>

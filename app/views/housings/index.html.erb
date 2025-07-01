@@ -1,0 +1,34 @@
+<div class="container py-5">
+  <h1 class="text-center mb-4">Locuințe</h1>
+
+  <%= form_with url: housings_path, method: :get, local: true, class: "d-flex justify-content-center gap-3 mb-4" do |f| %>
+    <div>
+      <%= label_tag :location, "Filtre:" %>
+      <%= select_tag :location, options_for_select(@locations.unshift(""), params[:location]), class: "form-select" %>
+    </div>
+    <div>
+      <%= label_tag :sort, "Preț" %>
+      <%= select_tag :sort, options_for_select([["Preț crescător", "asc"], ["Preț descrescător", "desc"]], params[:sort]), class: "form-select" %>
+    </div>
+    <%= submit_tag "Filtrează", class: "btn btn-outline-primary" %>
+  <% end %>
+
+  <div class="row">
+    <% @housings.each do |housing| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <% if housing.images.attached? %>
+            <%= image_tag housing.images.first.variant(resize_to_fill: [600, 400]), class: "card-img-top", alt: housing.title %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= number_to_currency(housing.price, unit: "€", precision: 0) %> pe lună</h5>
+            <p class="card-text"><%= housing.location %></p>
+            <% if user_signed_in? && current_user.admin?  && !housing.published %>
+              <%= button_to "Publică", publish_housing_path(housing), method: :patch, class: "btn btn-success btn-sm mt-2" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

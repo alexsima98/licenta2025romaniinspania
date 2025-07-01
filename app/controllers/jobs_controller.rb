@@ -4,7 +4,12 @@ class JobsController < ApplicationController
 
   def index
     @categories = Job.distinct.pluck(:category)
-    @jobs = Job.filter(params)
+    @jobs = policy_scope(Job)
+    @jobs = @jobs.order(published: :asc)
+
+    return unless params.slice(:category, :min_salary).present?
+
+    @jobs = @jobs.filter(params.slice(:category, :min_salary))
   end
 
   def show; end
@@ -35,6 +40,14 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     redirect_to jobs_path, notice: 'Job șters.'
+  end
+
+  def publish
+    @job = Job.find(params[:id])
+    authorize @job
+
+    @job.update(published: true)
+    redirect_to housings_path, notice: "Locuința a fost publicată."
   end
 
   private
